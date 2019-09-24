@@ -1,0 +1,164 @@
+
+package povtorenie_0;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
+import java.util.Scanner; 
+public class Povtorenie_0 {
+ public static void main(String[] args) throws IOException {
+    // read_txt();
+    write();
+     read();
+    // scn();
+     
+     
+    } 
+ public static void read_txt(){
+   try (FileReader reader = new FileReader("pov.txt")){
+           int simvol;
+           while((simvol=reader.read())!=-1){
+                 
+                System.out.print((char)simvol);
+            } 
+        }
+        catch(IOException ex){
+             
+            System.out.println(ex.getMessage());
+        }   
+   
+ }
+ 
+ public static void read() throws IOException{
+ try {
+            File file = new File("pov.txt");
+            //создаем объект FileReader для объекта File
+            FileReader fr = new FileReader(file);
+            //создаем BufferedReader с существующего FileReader для построчного считывания
+            BufferedReader reader = new BufferedReader(fr);
+            // считаем сначала первую строку
+            String line = reader.readLine();
+            String [] word=line.trim().split("\\s+");
+            
+        for(int i=1; i<14; i++){
+                  int result = 1;
+                  
+            while (line != null) {
+               // int result = 1;
+               // System.out.print("      "+line);
+               // System.out.print(" ");
+               // System.out.println(isPalindrome(line));
+           /*for (int j = 0; j < word.length ; j++) {
+result = result + word[j].length();
+ }*/
+           countw(line);
+                System.out.printf("%-5s%-1s%-57s%-1s%-11s%-1s%-11s%-1s%-14s%-1s%-14s%n", i++, "|",line,"|", isPalindrome(line),"|", countw(line), "|", getbyte(line), "|", hartley(line));
+                //System.out.println("");
+                for(int j=0; j<133; j++){
+         System.out.print("-");
+     }
+       System.out.println("");
+                // считываем остальные строки в цикле
+                line = reader.readLine();
+            }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+ }
+ public static void scn(){
+     Scanner scn=new Scanner(System.in);
+     String w =scn.next();
+     isPalindrome(w);
+     if (isPalindrome(w)){
+                System.out.printf("%s - полиндром \n", w);
+    }
+ }
+ public static void write(){
+    /* for(int i=0; i<133; i++){
+         System.out.print("-");
+     }
+     System.out.println("");
+     System.out.print("  № ");
+     System.out.print("|");
+     System.out.print("слово");
+     for(int j=0; j<53; j++){
+         System.out.print(" ");
+     }
+     System.out.print("|");
+      for(int j=0; j<12; j++){
+         System.out.print(" ");
+     }
+      System.out.print("|");
+      for(int j=0; j<17; j++){
+         System.out.print(" ");
+     }
+      System.out.print("Количество информации");
+      for(int j=0; j<17; j++){
+         System.out.print(" ");
+     }
+      System.out.print("|");
+      System.out.println("");
+      System.out.print("     |");
+      System.out.println("");*/
+    for(int i=0; i<133; i++){
+         System.out.print("-");
+     }
+      System.out.printf("%125s", ("-"));
+      
+      System.out.println("");
+      System.out.printf("%-4s%-1s%-57s%-1s%-11s%-1s%-53s%n", "№", "|","слово","|", " ","|", "Количество информации");
+       for(int i=0; i<133; i++){
+         System.out.print("-");
+     }
+       System.out.println("");
+      System.out.printf("%-5s%-1s%-57s%-1s%-11s%-1s%-11s%-1s%-14s%-1s%-14s%-1s%-14s%n", " ", "|"," ","|", "палиндром ","|", "кол-во","|", "байт, размер", "|", "бит,","|", "бит,");
+      System.out.printf("%-5s%-1s%-57s%-1s%-11s%-1s%-11s%-1s%-14s%-1s%-14s%-1s%-14s%n", " ", "|"," ","|", " ","|", "символов","|", "в программе", "|", "по Хартли", "|","по Шеннону");
+      for(int i=0; i<133; i++){
+         System.out.print("-");
+     }
+       System.out.println("");
+     
+ }
+ public static long countw(String s){
+     long wword = s
+		    .chars()
+		    .filter(Character::isLetter)
+		    .count();
+    
+     return wword;
+ }
+ public static int getbyte(String t) throws UnsupportedEncodingException{
+     String St = t;
+byte[] bytes = St.getBytes("UTF-8");
+int size = bytes.length;
+     return size;
+ }
+ public static boolean isPalindrome(String data) {
+   
+        data = data.toLowerCase();
+        data = data.replace(" ", "");
+        int dataLen = data.length();
+        for(int i = 0; i < dataLen / 2; i++)
+            if(data.charAt(i) != data.charAt(dataLen - i - 1))
+                return false;
+        return true;
+    }
+ public static long hartley(String word) {
+long hartley;
+int size = word.length(); 
+
+hartley = (long) (size * Math.log10(word.length()) / Math.log10(2));
+return hartley;
+}
+}
+
+
+     
+     
+     
+     
+    
+    
