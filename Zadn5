@@ -1,0 +1,79 @@
+package zadn5;
+
+public class Zadn5 {
+
+public static void main(String[] args) {
+
+System.out.println(integral1(-Math.PI,Math.PI,x1->{return 2*Math.sin(x1)+1;}));
+System.out.println(integral2(-Math.PI,Math.PI,x2->{return (-(Math.pow(x2/Math.PI,2))-2*x2+5*Math.PI);}));
+System.out.println(integral3(-Math.PI,Math.PI,x3->{return 0.5*Math.pow(Math.cos(x3),2)+1;}));
+}
+
+
+
+public static double integral1(double a, double b, Function1 function) { ///1 интерграл
+
+double area=0;
+double h=0.0001;
+for(int i=0; i<(b-a)/h;i++) {
+
+
+area+=h*function.func1(a+i*h);
+}
+
+
+
+
+return area;
+}
+
+
+public static double integral2(double a, double b, Function2 function) { ///2 интерграл
+
+double area=0;
+double h=0.0001;
+for(int i=0; i<(b-a)/h;i++) {
+
+
+area+=h*function.func2(a+i*h);
+}
+return area;
+}
+
+public static double integral3(double a, double b, Function3 function) { ///3 интерграл
+
+double area=0;
+double h=0.0001;
+for(int i=0; i<(b-a)/h;i++) {
+
+
+area+=h*function.func3(a+i*h);
+}
+return area;
+}
+
+
+
+
+
+interface Function1 {
+public double func1 (double x1); }
+
+
+interface Function2{
+
+public double func2 (double x2);
+}
+
+interface Function3{
+
+public double func3 (double x3);
+
+
+}
+
+
+
+
+
+}
