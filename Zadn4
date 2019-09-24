@@ -1,0 +1,145 @@
+package zadn4;
+
+public class Zadn4 {
+
+public static double f1(double x1) { ///для первой функции
+
+return (x1*Math.sin(x1))-0.5;
+
+}
+
+public static void func1() {
+
+double epsilon=0.0001;
+double a=0;
+double b=Math.PI;
+double c=0;
+int i=0;
+while ((b-a)>epsilon) {
+
+c=(a+b)/2;
+if(f1(c)==0) break;
+if(f1(c)*f1(a)<0)
+b=c;
+else
+a=c;
+i++;}
+
+System.out.println("Для 1 ф-и x = "+(b+a)/2);
+System.out.println(" f1(x) ="+f1(c));
+
+}
+
+
+public static double f2(double x2) { ///для 2 функции
+
+
+return Math.log10(Math.pow(x2, 2)-3*x2+2);
+
+
+}
+
+public static void func2() {
+
+double epsilon=0.0001;
+double a=0;
+double b=0.9;
+double c=0;
+int i=0;
+
+while ((b-a)>epsilon) {
+
+c=(a+b)/2;
+if(f2(c)==0) break;
+if(f2(c)*f2(a)<0)
+b=c;
+else
+a=c;
+i++;}
+
+System.out.println("Для 2 ф-и x = "+(b+a)/2);
+System.out.println(" f2(x) ="+f2(c));
+
+}
+
+public static double f3(double x3) { ///для 3 ф-и
+
+return Math.log10(Math.pow(x3, 2)-3*x3+2);
+}
+
+public static void func3 () {
+
+
+double epsilon=0.0001;
+double a=2.1;
+double b=5;
+double c=0;
+int i=0;
+
+while ((b-a)>epsilon) {
+
+c=(a+b)/2;
+if(f3(c)==0) break;
+if(f3(c)*f3(a)<0)
+b=c;
+else
+a=c;
+i++;}
+
+System.out.println("Для 3 ф-и x = "+(b+a)/2);
+System.out.println(" f3(x) ="+f3(c));
+
+
+}
+
+
+public static double f4(double x4) {
+
+return 0.5*Math.tan((2/3)*(x4+Math.PI/4))-1;
+
+
+}
+
+public static void func4() {
+
+double epsilon=0.0001;
+double a=Math.PI;
+double b=2*Math.PI;
+double c=0;
+int i=0;
+
+while ((b-a)>epsilon) {
+
+c=(a+b)/2;
+if(f4(c)==0) break;
+if(f4(c)*f4(a)<0)
+b=c;
+else
+a=c;
+i++;}
+
+System.out.println("Для 4 ф-и x = "+(b+a)/2);
+System.out.println(" f4(x) ="+f4(c));
+
+
+
+}
+
+
+
+public static void main(String[] args) {
+
+func1();
+func2();
+func3();
+func4();
+
+}
+
+
+
+
+
+
+
+}
