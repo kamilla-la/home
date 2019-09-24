@@ -1,0 +1,81 @@
+package zadn2;
+import java.util.Scanner;
+public class Zadn2 {
+
+
+public static void main(String[] args) {
+
+
+b1();
+b2();
+}
+
+
+public static void b1() {
+
+int k=0,k1=0,k2=0,k3=0,k4=0;
+
+double x,y1,y2,y3,y4;
+double b=2*Math.PI;
+for (x=-2*Math.PI;x<=b;x+=Math.PI/6) {
+
+y1=2*Math.sin(x)+1;
+
+y2=Math.pow((x/Math.PI)-1,2);
+y3=(-Math.pow(x/Math.PI,2))-2*x+5*Math.PI;
+y4=0.5*Math.pow(Math.cos(x), 2)+1;
+
+if (y1<0|y2<0|y3<0|y4<4) {
+
+
+k+=1;
+}
+
+if (y1<0) {
+
+k1+=1;}
+
+if (y2<0) {
+
+k2+=1;
+}
+
+if (y3<0) {
+
+k3+=1;
+
+}
+
+if (y4<0) {
+
+k4+=1;
+}
+}
+
+System.out.println("Общее "+k);
+System.out.println("Для y1 "+k1);
+System.out.println("Для y2 "+k2);
+System.out.println("Для y3 "+k3);
+System.out.println("Для y4 "+k4);
+
+
+}
+
+
+
+public static void b2() {
+int i;
+System.out.println("Введите n");
+Scanner scn=new Scanner(System.in);
+int n=scn.nextInt();
+int [] x=new int [n];
+
+for(i=0; i<x.length;i++) {
+x[i]=(int) Math.round((Math.random() * 21) - 10);
+System.out.println(x[i]);
+
+
+}
+}
+
+}
